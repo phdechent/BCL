@@ -1,0 +1,231 @@
+
+{
+    "@context": "https://w3id.org/emmo/domain/battery/context",
+    "@type": "BatteryCyclingTest",
+    "rdfs:label": "CycleLifeCondition",
+    "rdfs:comment": "A cycling test using high drain rate",
+    "owl:versionInfo": "0.1.0",
+
+    "dc:identifier": "https://doi.org/10.1234/example.doi",
+    "dc:title": "Cycle Life Condition",
+    "dc:description": "A cycling test using high drain rate",
+    "dc:subject": ["battery", "li-ion", "cycling"],
+    "dc:language": "en",
+    "dc:license": {
+      "@id": "http://opendefinition.org/licenses/cc-by/"
+    },
+    "dc:accessRights": "public",
+    "dc:publisher": {
+      "@type": "schema:CollegeOrUniversity",
+      "@id": "https://ror.org/052gg0110",
+      "schema:name": "Oxford University"
+    },
+    "dc:creator": {
+    "@type": "schema:Person",
+      "@id": "https://orcid.org/0000-0003-3041-1436",
+      "schema:name": "Philipp Dechent",
+      "schema:affiliation": {
+        "@type": "schema:CollegeOrUniversity",
+        "@id": "https://ror.org/052gg0110",
+        "schema:name": "Oxford University"
+      }
+    },
+    "dc:contributor": {
+    "@type": "schema:Person",
+      "@id": "https://orcid.org/0000-0002-8758-6109",
+      "schema:name": "Simon Clark",
+      "schema:affiliation": {
+    "@type": "schema:Organization",
+        "@id": "https://ror.org/01f677e56",
+        "schema:name": "SINTEF"
+      }
+    },
+    "dc:created": {
+      "@value": "2024-07-07",
+      "@type": "xsd:date"
+    },
+    "dc:modified": {
+      "@value": "2024-07-07",
+      "@type": "xsd:date"
+    },
+    "dc:hasVersion": "0.1.0",
+    "dc:format": "application/ld+json",
+  
+    "schema:name": "Cycle Life Condition",
+    "schema:description": "A cycling test using high drain rate",
+    "schema:version": "0.1.0",
+    "schema:contactPoint": {
+      "@type": "schema:ContactPoint",
+      "schema:contactType": "corresponding author",
+      "schema:email": "mailto:philipp.dechent@eng.ox.ac.uk"
+    },
+    "schema:encodingFormat": "application/ld+json",
+
+    "hasTask": [
+        {
+            "@type": ["ConstantCurrentConstantVoltageCycling", "IterativeWorkflow"],
+            "rdfs:label": "HighDrainRateChargeDischargeCondition",
+            "rdfs:comment": "A cycling test using high drain rate",
+            "hasMeasurementParameter": {
+                "@type": "NumberOfIterations",
+                "hasNumericalPart": {
+                    "@type": "Real",
+                    "hasNumericalValue": 400
+                },
+                "hasMeasurementUnit": "emmo:UnitOne"
+            },
+            "hasTask": {
+                "@type": "ConstantCurrentCharging",
+                "hasMeasurementParameter": [
+                    {
+                        "@type": "ChargingCurrent",
+                        "hasNumericalPart": {
+                            "@type": "Real",
+                            "hasNumericalValue": 1.5
+                        },
+                        "hasMeasurementUnit": "emmo:Ampere"
+                    },
+                    {
+                        "@type": "UpperVoltageLimit",
+                        "hasNumericalPart": {
+                            "@type": "Real",
+                            "hasNumericalValue": 4.2
+                        },
+                        "hasMeasurementUnit": "emmo:Volt"
+                    }
+                ],
+                "hasNext": {
+                    "@type": "ConstantVoltageCharging",
+                    "hasMeasurementParameter": [
+                        {
+                            "@type": "ChargingVoltage",
+                            "hasNumericalPart": {
+                                "@type": "Real",
+                                "hasNumericalValue": 4.2
+                            },
+                            "hasMeasurementUnit": "emmo:Volt"
+                        },
+                        {
+                            "@type": "LowerCurrentLimit",
+                            "hasNumericalPart": {
+                                "@type": "Real",
+                                "hasNumericalValue": 0.1
+                            },
+                            "hasMeasurementUnit": "emmo:Ampere"
+                        }
+                    ],
+                    "hasNext": {
+                        "@type": "RestingStep",
+                        "hasMeasurementParameter": [
+                            {
+                                "@type": "Duration",
+                                "hasNumericalPart": {
+                                    "@type": "Real",
+                                    "hasNumericalValue": 600
+                                },
+                                "hasMeasurementUnit": "emmo:Second"
+                            }
+                        ],
+                        "hasNext": {
+                            "@type": "ConstantCurrentDischarging",
+                            "hasMeasurementParameter": [
+                                {
+                                    "@type": "DischargingCurrent",
+                                    "hasNumericalPart": {
+                                        "@type": "Real",
+                                        "hasNumericalValue": 4.0
+                                    },
+                                    "hasMeasurementUnit": "emmo:Ampere"
+                                },
+                                {
+                                    "@type": "LowerVoltageLimit",
+                                    "hasNumericalPart": {
+                                        "@type": "Real",
+                                        "hasNumericalValue": 2.5
+                                    },
+                                    "hasMeasurementUnit": "emmo:Volt"
+                                }
+                            ]
+                        }
+                    }
+                }
+            },
+            "hasNext": {
+                "@type": ["ConstantCurrentConstantVoltageCycling", "IterativeWorkflow"],
+                "rdfs:label": "cycle_401_reference_test",
+                "rdfs:comment": "A reference cycling test",
+                "hasMeasurementParameter": {
+                    "@type": "NumberOfIterations",
+                    "hasNumericalPart": {
+                        "@type": "Real",
+                        "hasNumericalValue": 1
+                    },
+                    "hasMeasurementUnit": "emmo:UnitOne"
+                },
+                "hasTask": {
+                    "@type": "ConstantCurrentCharging",
+                    "hasMeasurementParameter": [
+                        {
+                            "@type": "ChargingCurrent",
+                            "hasNumericalPart": {
+                                "@type": "Real",
+                                "hasNumericalValue": 0.5
+                            },
+                            "hasMeasurementUnit": "emmo:Ampere"
+                        },
+                        {
+                            "@type": "UpperVoltageLimit",
+                            "hasNumericalPart": {
+                                "@type": "Real",
+                                "hasNumericalValue": 4.2
+                            },
+                            "hasMeasurementUnit": "emmo:Volt"
+                        }
+                    ],
+                    "hasNext": {
+                        "@type": "ConstantVoltageCharging",
+                        "hasMeasurementParameter": [
+                            {
+                                "@type": "ChargingVoltage",
+                                "hasNumericalPart": {
+                                    "@type": "Real",
+                                    "hasNumericalValue": 4.2
+                                },
+                                "hasMeasurementUnit": "emmo:Volt"
+                            },
+                            {
+                                "@type": "LowerCurrentLimit",
+                                "hasNumericalPart": {
+                                    "@type": "Real",
+                                    "hasNumericalValue": 0.05
+                                },
+                                "hasMeasurementUnit": "emmo:Ampere"
+                            }
+                        ],
+                        "hasNext": {
+                            "@type": "ConstantCurrentDischarging",
+                            "hasMeasurementParameter": [
+                                {
+                                    "@type": "DischargingCurrent",
+                                    "hasNumericalPart": {
+                                        "@type": "Real",
+                                        "hasNumericalValue": 0.2
+                                    },
+                                    "hasMeasurementUnit": "emmo:Ampere"
+                                },
+                                {
+                                    "@type": "LowerVoltageLimit",
+                                    "hasNumericalPart": {
+                                        "@type": "Real",
+                                        "hasNumericalValue": 2.5
+                                    },
+                                    "hasMeasurementUnit": "emmo:Volt"
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}
