@@ -59,7 +59,7 @@ def read_json_to_dict(file_path: str) -> List[str]:
                     else:
                         sequence_output_list.append(
                         f"Discharge at {value}{type_to_units.get(unit, unit)} "
-                        f"for {termination_value}{type_to_units.get(termination_unit, termination_unit)}"
+                        f"for {termination_value} {type_to_units.get(termination_unit, termination_unit)}"
                     )
                 else:
                     if termination_type == 'Voltage':
@@ -70,7 +70,7 @@ def read_json_to_dict(file_path: str) -> List[str]:
                     else:
                         sequence_output_list.append(
                         f"Charge at {-value}{type_to_units.get(unit, unit)} "
-                        f"for {termination_value}{type_to_units.get(termination_unit, termination_unit)}"
+                        f"for {termination_value} {type_to_units.get(termination_unit, termination_unit)}"
                         )
             elif step_type == 'Voltage':
                     if termination_type == 'ElectricCurrent':
@@ -92,6 +92,5 @@ def read_json_to_dict(file_path: str) -> List[str]:
             for idx in range(instruction.get('repeat', 1)): # repetitions for sequences
                 output_list.extend(sequence_output_list)
         else:
-            output_list.extend(sequence_output_list)
-            
+            output_list.append(tuple(sequence_output_list))
     return output_list
